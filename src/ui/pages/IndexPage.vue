@@ -7,7 +7,7 @@ defineOptions({
 </script>
 
 <template>
-  <q-page class="q-px-lg full-height">
+  <q-page class="q-px-lg q-mb-xl full-height">
     <div>
       <div class="q-col-gutter-md row items-start">
         <div class="col-12 col-md-4">

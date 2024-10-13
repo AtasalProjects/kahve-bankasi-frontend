@@ -5,9 +5,14 @@ const tab = ref('mails');
 
 const hidden = ref(false);
 const isScrolled = ref(false);
+const { transparentEffect } = defineProps({
+  transparentEffect: { type: Boolean, default: true, required: false },
+});
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll);
+  transparentEffect
+    ? window.addEventListener('scroll', handleScroll)
+    : (isScrolled.value = true);
 });
 
 function revealed() {
@@ -24,6 +29,7 @@ function handleScroll() {
     :class="`${
       isScrolled ? 'bg-primary' : 'transparent'
     } no-shadow q-px-lg q-py-lg`"
+    height-hint="100px"
     reveal
     :bordered="isScrolled"
     @reveal="revealed"
@@ -46,8 +52,13 @@ function handleScroll() {
         :breakpoint="0"
         no-caps
       >
-        <q-tab :ripple="false" name="mails" label="Anasayfa" />
-        <q-tab :ripple="false" name="alarms" label="Hakkımızda" />
+        <q-route-tab :ripple="false" name="home" label="Anasayfa" to="/" />
+        <q-route-tab
+          :ripple="false"
+          name="about"
+          label="Hakkımızda"
+          to="/about"
+        />
       </q-tabs>
 
       <q-avatar color="red" text-color="white" icon="directions" />
