@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { mdiDirections } from '@quasar/extras/mdi-v6';
+</script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-center">
@@ -42,12 +44,14 @@
             <q-btn
               size="md"
               color="black"
-              label="Yol Tarifi"
               padding="md lg"
               :ripple="false"
               unelevated
               no-caps
-            ></q-btn>
+            >
+              <div>Yol Tarifi</div>
+              <q-icon right size="sm" :name="mdiDirections" />
+            </q-btn>
           </q-card-section>
         </q-card>
       </div>
@@ -72,12 +76,14 @@
             <q-btn
               size="md"
               color="black"
-              label="Yol Tarifi"
               padding="md lg"
               :ripple="false"
               unelevated
               no-caps
-            ></q-btn>
+            >
+              <div>Yol Tarifi</div>
+              <q-icon right size="sm" :name="mdiDirections" />
+            </q-btn>
           </q-card-section>
         </q-card>
       </div>
