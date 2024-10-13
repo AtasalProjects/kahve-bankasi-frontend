@@ -34,6 +34,16 @@ const routes: RouteRecordRaw[] = [
       },
     ],
   },
+  {
+    path: '/products',
+    component: () => import('layouts/NavbarFooterLayout.vue'),
+    children: [
+      {
+        path: ':slug',
+        component: () => import('pages/products/CoffeePage.vue'),
+      },
+    ],
+  },
   // 404 Not Found Page
   {
     path: '/:catchAll(.*)*',

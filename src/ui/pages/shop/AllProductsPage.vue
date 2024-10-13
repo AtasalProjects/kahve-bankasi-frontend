@@ -13,7 +13,11 @@
           transition="scale"
           style="height: 605px"
         >
-          <q-card flat class="transparent q-pa-sm">
+          <q-card
+            flat
+            class="all-pointer-events transparent q-pa-sm"
+            @click="$router.push('/products/osmanli-kahvesi')"
+          >
             <q-img
               :src="`/src/assets/images/${index % 4 === 0 ? 1 : index % 4}.png`"
               class="q-mb-xl"

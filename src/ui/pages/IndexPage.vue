@@ -102,7 +102,7 @@ defineOptions({
     </div>
     <div class="text-center" style="margin-bottom: 4.3em; padding-top: 75px">
       <h2 class="text-apple-ls">Yeni Çıkanlar</h2>
-      <q-btn label="Hepsine Göz At" outline no-caps></q-btn>
+      <q-btn label="Hepsine Göz At" outline no-caps to="/shop/coffee"></q-btn>
       <HomeCoffeeCards class="q-mt-xl"></HomeCoffeeCards>
     </div>
 

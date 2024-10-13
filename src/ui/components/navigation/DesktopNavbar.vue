@@ -106,8 +106,6 @@ function handleMouseLeaveFromLink() {
             @mouseleave="handleMouseLeaveFromLink"
           />
         </q-tabs>
-
-        <q-avatar color="red" text-color="white" icon="directions" />
       </q-toolbar>
 
       <transition
