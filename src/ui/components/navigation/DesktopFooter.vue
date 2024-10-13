@@ -1,8 +1,10 @@
 <script setup lang="ts">
 const menu = [
-  { label: 'Anasayfa' },
-  { label: 'Hakkımızda' },
-  { label: 'Kahveler' },
+  { label: 'Anasayfa', to: '/' },
+  { label: 'Hakkımızda', to: '/about' },
+  { label: 'Mağazamız', to: '/shop/all-products' },
+  { label: 'Kahveler', to: '/shop/coffee' },
+  { label: 'İletişim', to: '/contact' },
 ];
 
 const social = [
@@ -32,7 +34,7 @@ const contact = [
           </div>
         </div>
         <div class="col-6 col-md-2">
-          <p class="text-body1 font-weight-bold q-mb-md">Menü</p>
+          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls">Menü</p>
           <div v-for="link in menu" :key="link.label">
             <q-btn
               class="custom-button"
@@ -42,11 +44,12 @@ const contact = [
               :ripple="false"
               padding="xs xs"
               no-caps
+              :to="link.to"
             />
           </div>
         </div>
         <div class="col-6 col-md-2">
-          <p class="text-body1 font-weight-bold q-mb-md">Sosyal</p>
+          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls">Sosyal</p>
           <div v-for="link in social" :key="link.label">
             <q-btn
               class="custom-button"
@@ -60,7 +63,7 @@ const contact = [
           </div>
         </div>
         <div class="col-6 col-md-3">
-          <p class="text-body1 font-weight-bold q-mb-md">İletişim</p>
+          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls">İletişim</p>
           <div v-for="link in contact" :key="link.label">
             <q-btn
               class="custom-button"

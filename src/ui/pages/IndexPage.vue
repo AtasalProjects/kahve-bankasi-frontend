@@ -146,7 +146,7 @@ defineOptions({
 
     <div class="container text-center">
       <h4 class="text-h3 q-mb-md text-apple-ls" style="margin-top: 125px">
-        Bizimle İletişime Geçin
+        Bizimle iletişime geçin
       </h4>
       <p class="text-body1">
         Fikirleriniz, önerileriniz, siparişleriniz ve daha fazlası için ne zaman
