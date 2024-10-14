@@ -1,4 +1,11 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import img1 from 'assets/images/1.png';
+import img2 from 'assets/images/2.png';
+import img3 from 'assets/images/3.png';
+import img4 from 'assets/images/4.png';
+
+const images = [img1, img2, img3, img4];
+</script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-center">
@@ -16,10 +23,10 @@
           <q-card
             flat
             class="all-pointer-events transparent q-pa-sm"
-            @click="$router.push('/products/osmanli-kahvesi')"
+            @click="$router.push('/products/' + (index % 4))"
           >
             <q-img
-              :src="`/src/assets/images/${index % 4 === 0 ? 1 : index % 4}.png`"
+              :src="`${images[index % 4]}`"
               class="q-mb-xl"
               fit="contain"
               ratio="1"

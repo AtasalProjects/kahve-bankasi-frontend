@@ -44,6 +44,8 @@ import { images } from 'src/constants/images';
         <q-card flat square>
           <q-img
             :src="`${image}`"
+            loading="lazy"
+            spinner-color="primary"
             fit="cover"
             :height="$q.screen.gt.md ? '742px' : '188px'"
           />

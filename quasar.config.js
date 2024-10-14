@@ -48,6 +48,7 @@ module.exports = configure(function (/* ctx */) {
         pages: path.join(__dirname, './src/ui/pages'),
         components: path.join(__dirname, './src/ui/components'),
         layouts: path.join(__dirname, './src/ui/layouts'),
+        assets: path.join(__dirname, './src/assets'),
       },
 
       vueRouterMode: 'history', // available values: 'hash', 'history'

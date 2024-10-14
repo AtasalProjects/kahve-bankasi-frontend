@@ -1,16 +1,23 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+
+const imgNumber = ref<string>(route.params.slug as string);
+
+const imgUrl = new URL(
+  `/src/assets/images/${+imgNumber.value + 1}.png`,
+  import.meta.url
+).href;
+</script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-center">
     <div class="q-px-lg q-mb-xl" style="padding-top: 145px">
       <div class="row">
         <div class="col-12 col-md-6">
-          <q-img
-            src="/src/assets/images/1.png"
-            class="q-mb-xl"
-            fit="scale-down"
-            ratio="0.75"
-          />
+          <q-img :src="imgUrl" class="q-mb-xl" fit="scale-down" ratio="0.75" />
         </div>
         <div class="col-12 col-md-6 text-left q-px-xl">
           <div class="text-subtitle1 text-weight-regular q-mb-md">
