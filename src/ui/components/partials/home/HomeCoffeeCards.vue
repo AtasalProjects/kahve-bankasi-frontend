@@ -43,7 +43,7 @@
     <div v-else>
       <q-scroll-area style="height: 600px">
         <div class="row no-wrap q-gutter-xl">
-          <q-card class="col-3 transparent text-center" flat>
+          <q-card class="col-4 transparent text-center" flat>
             <q-img src="~assets/images/1.png" height="427px" fit="contain" />
 
             <q-card-section>
@@ -52,7 +52,7 @@
               <div class="text-subtitle2">₺125.00</div>
             </q-card-section>
           </q-card>
-          <q-card class="col-3 transparent text-center" flat>
+          <q-card class="col-4 transparent text-center" flat>
             <q-img src="~assets/images/2.png" height="427px" fit="contain" />
 
             <q-card-section>
@@ -61,7 +61,7 @@
               <div class="text-subtitle2">₺339.00</div>
             </q-card-section>
           </q-card>
-          <q-card class="col-3 transparent text-center" flat>
+          <q-card class="col-4 transparent text-center" flat>
             <q-img src="~assets/images/3.png" height="427px" fit="contain" />
 
             <q-card-section>
@@ -70,7 +70,7 @@
               <div class="text-subtitle2">₺456.00</div>
             </q-card-section>
           </q-card>
-          <q-card class="col-3 transparent text-center" flat>
+          <q-card class="col-4 transparent text-center" flat>
             <q-img src="~assets/images/4.png" height="427px" fit="contain" />
 
             <q-card-section>

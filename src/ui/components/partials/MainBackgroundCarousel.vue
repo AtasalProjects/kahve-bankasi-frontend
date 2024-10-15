@@ -1,13 +1,19 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
+import { randomSrc } from 'src/constants/images';
+import { onMounted, ref } from 'vue';
 const slide = ref(1);
+const imageSrcs = ref<string[]>([]);
+
+onMounted(() => {
+  imageSrcs.value = randomSrc(4);
+});
 
 const setBackground = (imgSrc: string) => {
   return {
     backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url(${imgSrc})`,
     backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
     height: '800px',
   };
 };
@@ -27,7 +33,7 @@ const setBackground = (imgSrc: string) => {
     >
       <q-carousel-slide
         :name="1"
-        :style="setBackground('https://cdn.quasar.dev/img/mountains.jpg')"
+        :style="setBackground(imageSrcs[0])"
         class="text-center bg-image"
       >
         <div
@@ -44,16 +50,17 @@ const setBackground = (imgSrc: string) => {
             class="q-px-xl q-py-xs"
             label="Detaylar"
             color="white"
-            size="xl"
+            :size="$q.screen.gt.md ? 'xl' : 'lg'"
             outline
             no-caps
+            to="/about"
           />
         </div>
       </q-carousel-slide>
 
       <q-carousel-slide
         :name="2"
-        :style="setBackground('https://cdn.quasar.dev/img/parallax1.jpg')"
+        :style="setBackground(imageSrcs[1])"
         class="column no-wrap flex-center bg-image"
       >
         <h1 class="store-title text-apple-ls">
@@ -64,7 +71,7 @@ const setBackground = (imgSrc: string) => {
             class="q-px-xl q-py-xs q-mr-md"
             label="Hikayemiz"
             color="white"
-            size="xl"
+            :size="$q.screen.gt.md ? 'xl' : 'md'"
             outline
             no-caps
           />
@@ -72,7 +79,7 @@ const setBackground = (imgSrc: string) => {
             class="q-px-xl q-py-xs"
             label="Konumumuz"
             color="white"
-            size="xl"
+            :size="$q.screen.gt.md ? 'xl' : 'md'"
             outline
             no-caps
           />
@@ -81,7 +88,7 @@ const setBackground = (imgSrc: string) => {
 
       <q-carousel-slide
         :name="3"
-        :style="setBackground('https://cdn.quasar.dev/img/parallax2.jpg')"
+        :style="setBackground(imageSrcs[2])"
         class="column no-wrap flex-center bg-image"
       >
         <h1 class="store-title text-apple-ls">Her Yudumda Farklı Bir Tat</h1>
@@ -89,7 +96,7 @@ const setBackground = (imgSrc: string) => {
 
       <q-carousel-slide
         :name="4"
-        :style="setBackground('https://cdn.quasar.dev/img/quasar.jpg')"
+        :style="setBackground(imageSrcs[3])"
         class="column no-wrap flex-center bg-image"
       >
         <h1 class="store-title text-apple-ls">Lezzet Dolu Molalar</h1>
@@ -111,5 +118,12 @@ const setBackground = (imgSrc: string) => {
   font-size: 80px;
   font-weight: normal;
   color: white;
+}
+
+@media (max-width: 960px) {
+  .store-title {
+    font-size: 40px;
+    line-height: 4rem;
+  }
 }
 </style>

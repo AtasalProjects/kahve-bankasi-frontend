@@ -26,13 +26,21 @@ function handleScroll() {
 
 const menuList = [
   {
-    icon: 'mdi-inbox',
+    icon: 'mdi-home',
     label: 'Anasayda',
+    to: '/',
     separator: true,
   },
   {
     icon: 'mdi-information-outline',
     label: 'Hakkımızda',
+    to: '/about',
+    separator: false,
+  },
+  {
+    icon: 'mdi-human-greeting-proximity',
+    label: 'İletişim',
+    to: '/contact',
     separator: false,
   },
 ];
@@ -41,8 +49,9 @@ const menuList = [
 <template>
   <div>
     <q-header
-      class="bg-primary text-grey-10"
-      elevated
+      :class="isScrolled ? 'bg-primary' : 'transparent'"
+      class="text-grey-10"
+      :bordered="isScrolled"
       reveal
       @reveal="revealed"
     >
@@ -61,17 +70,28 @@ const menuList = [
 
     <q-drawer
       v-model="drawer"
-      class="bg-grey-10 text-primary"
-      show-if-above
+      class="remove-top bg-grey-10 text-primary"
       :width="300"
       :breakpoint="400"
       overlay
       side="right"
     >
+      <q-btn
+        class="float-right"
+        icon="mdi-close"
+        size="xl"
+        flat
+        @click="drawer = false"
+      ></q-btn>
       <q-scroll-area class="fit">
         <q-list>
           <template v-for="(menuItem, index) in menuList" :key="index">
-            <q-item clickable :active="menuItem.label === 'Outbox'" v-ripple>
+            <q-item
+              clickable
+              :active="menuItem.label === 'Outbox'"
+              v-ripple
+              :to="menuItem.to"
+            >
               <q-item-section avatar>
                 <q-icon :name="menuItem.icon" />
               </q-item-section>
@@ -81,17 +101,18 @@ const menuList = [
             </q-item>
             <q-separator :key="'sep' + index" v-if="menuItem.separator" />
           </template>
-          <q-expansion-item
-            switch-toggle-side
-            expand-separator
-            icon="mdi-home"
-            label="Mağazamız"
-          >
-            <q-item clickable v-ripple>
+          <q-expansion-item expand-separator icon="mdi-store" label="Mağazamız">
+            <q-item :inset-level="1" clickable v-ripple to="/shop/all-products">
               <q-item-section avatar>
-                <q-icon name="mdi-store" />
+                <q-icon name="mdi-table-of-contents" />
               </q-item-section>
-              <q-item-section> Mağazamız </q-item-section>
+              <q-item-section> Tüm Ürünler </q-item-section>
+            </q-item>
+            <q-item :inset-level="1" clickable v-ripple to="/shop/coffee">
+              <q-item-section avatar>
+                <q-icon name="mdi-coffee" />
+              </q-item-section>
+              <q-item-section> Kahveler </q-item-section>
             </q-item>
           </q-expansion-item>
         </q-list>
@@ -99,3 +120,9 @@ const menuList = [
     </q-drawer>
   </div>
 </template>
+
+<style scoped>
+::v-deep .q-drawer {
+  top: 0 !important; /* Force override the top property */
+}
+</style>

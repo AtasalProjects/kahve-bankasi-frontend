@@ -1,40 +1,46 @@
 <script setup lang="ts">
-import { images } from 'src/constants/images';
+import { randomSrc } from 'src/constants/images';
+
+const images = randomSrc(3);
 </script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-center">
     <div class="container q-px-lg q-mb-xl">
-      <h4 class="text-h4 text-apple-ls q-mb-md q-mb-md-xl">Misyonumuz</h4>
+      <h4 class="text-h4 text-apple-ls q-mb-md q-mb-md-xl">Biz Kimiz?</h4>
       <p
         :class="`${
           $q.screen.gt.md ? 'text-h6' : 'text-body1'
         } text-weight-regular text-grey-10`"
       >
-        Kahve Bankası, kahve severlere benzersiz bir kahve deneyimi sunmak
-        amacıyla kuruldu. İyi kahveye olan tutkumuzla, kaliteli kahve
-        çekirdeklerini titizlikle seçiyor ve özenle işliyoruz. Amacımız, her
-        fincanda mükemmel tadı yakalamak ve kahve tutkunlarına unutulmaz bir
-        deneyim sunmaktır.
+        Kahve Bankası, Mardin'in tarihi dokusunu modern bir kahve deneyimiyle
+        buluşturan, sıcak ve samimi bir durak. Kahveye olan tutkumuz, lezzet
+        arayışımızla birleşerek her fincanda sizin tercihinize göre en özel
+        karışımları sunmamızı sağlıyor. Espresso, süt oranı, kahvenizin
+        sıcaklığı gibi her detayı tamamen size göre ayarlıyoruz. Böylece her
+        yudum, tamamen size ait.
       </p>
       <p
         :class="`${
           $q.screen.gt.md ? 'text-h6' : 'text-body1'
         } text-weight-regular text-grey-10`"
       >
-        Sadece bir kahve markası değil, aynı zamanda kahve kültürünü yaymayı ve
-        kahve severlerin hayatlarına dokunmayı hedefliyoruz. Şubelerimizde,
-        nitelikli baristalarımızın ellerinden çıkan eşsiz kahve çeşitlerini
-        deneyimleyebilir, her yudumda kahvenin büyüsüne kapılabilirsiniz.
+        Kahve Bankası'nda, geleneksel kahve kültürünü, modern bir atmosferde
+        yaşıyoruz. Küçük ama sıcak mekanımızda hem çerezler, baharatlar ve
+        kolonyalar gibi ürünlerimizi satın alabilir, hem de dostlarınızla sohbet
+        edip anın tadını çıkarabilirsiniz. Bizim için önemli olan, kendinizi
+        evinizde gibi hissetmeniz.
       </p>
       <p
         :class="`${
           $q.screen.gt.md ? 'text-h6' : 'text-body1'
         } text-weight-regular text-grey-10`"
       >
-        Kahve Bankası olarak misyonumuz, kahveyi yalnızca bir içecek değil, bir
-        yaşam tarzı haline getirmek ve tüm kahve severleri bu yolculukta
-        yanımızda görmek.
+        Biz sadece bir kahve dükkanı değiliz; her fincanda bir hikaye, her
+        sohbetinize eşlik eden bir deneyim sunuyoruz. Kahve Bankası’nda her
+        damla, özenle seçilmiş ve size özel hazırlanmış bir yolculuğa dönüşüyor.
+        Kapımız her zaman açık, gelin, kahvemiz eşliğinde hoş bir muhabbet
+        edelim.
       </p>
     </div>
     <div
@@ -76,11 +82,11 @@ import { images } from 'src/constants/images';
                 $q.screen.gt.md ? 'text-left' : 'text-center'
               } text-body1`"
             >
-              Designed in homage to the European espresso bar, Black Fox is
-              built around conversation, engagement and community. Our spaces
-              were created to be a neighborhood meeting place––a warm and
-              welcoming respite that fosters connection between customers and
-              our team.
+              Midyat’ta dostlarınızla bir araya gelip sıcak bir kahve eşliğinde
+              keyifli anlar paylaşmak için sizleri bekliyoruz. Geleneksel
+              lezzetlerimizi modern bir ortamda sunarak, her zaman yeni tatlar
+              keşfetmenizi sağlamak için buradayız. Gelin, birlikte güzel anılar
+              biriktirelim!
             </p>
 
             <q-btn

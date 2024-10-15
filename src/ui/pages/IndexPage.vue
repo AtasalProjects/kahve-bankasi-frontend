@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import HomeCoffeeCards from 'components/partials/home/HomeCoffeeCards.vue';
+import { randomSrc } from 'src/constants/images';
 
 defineOptions({
   name: 'IndexPage',
 });
+
+const img = randomSrc(1)[0];
 </script>
 
 <template>
   <q-page class="q-px-lg q-mb-xl full-height">
-    <div>
+    <!-- <div>
       <div class="q-col-gutter-md row items-start">
         <div class="col-12 col-md-4">
           <q-img
@@ -99,8 +102,9 @@ defineOptions({
           </q-img>
         </div>
       </div>
-    </div>
-    <div class="text-center" style="margin-bottom: 4.3em; padding-top: 75px">
+    </div> -->
+    <div class="text-center" style="margin-bottom: 4.3em">
+      <!-- padding-top: 75px -->
       <h2 class="text-apple-ls">Yeni Çıkanlar</h2>
       <q-btn label="Hepsine Göz At" outline no-caps to="/shop/coffee"></q-btn>
       <HomeCoffeeCards class="q-mt-xl"></HomeCoffeeCards>
@@ -111,25 +115,19 @@ defineOptions({
     <div class="text-center" style="padding-top: 75px">
       <div class="container">
         <h4 class="text-h4 text-apple-ls">
-          Dünyanın dört bir yanındaki en iyi kavurucularla iş birliği yapmaktan
-          gurur duyuyoruz.
+          Kahve Deneyiminizi Zenginleştiren Seçenekler
         </h4>
         <p class="text-h6 text-weight-light">
-          Kahve Bankası olarak, müşterilerimize farklı kahve seçenekleri
-          sunmaktan ve onları bilinçlendirmekten büyük keyif alıyoruz. Kendi
-          kahvemizi kavurmanın yanı sıra, aynı tutkuya sahip kavurucularla iş
-          birliği yaparak müşterilerimize yeni tatlar keşfetme şansı tanıyoruz.
-          Ekibimiz ise, bu deneyimleri paylaşmak ve bilgilerini aktarmaktan
-          mutluluk duyuyor.
+          Biz müşterilerimize çeşitli kahve seçenekleri sunmaktan ve onlarla bu
+          lezzetleri paylaşmaktan büyük keyif alıyoruz. Kendi kahvemizi özenle
+          kavurmanın yanı sıra, farklı tatlar deneme fırsatı sunuyoruz. Bu
+          keyifli anları sizinle paylaşmaktan ve kahve deneyimlerinizi
+          zenginleştirmekten mutluluk duyuyoruz.
         </p>
       </div>
-      <q-img
-        class="q-mt-md"
-        src="https://img.freepik.com/premium-photo/background-texture-brick-wall-old-brick-black-white-photo-with-vignette_98725-2207.jpg"
-        height="500px"
-      >
+      <q-img class="q-mt-md" :src="img" height="500px">
         <div
-          class="absolute-full text-h3 text-apple-ls flex flex-center"
+          class="absolute-full text-h4 text-md-h3 text-apple-ls flex flex-center"
           style="
             background: linear-gradient(
               to bottom,
@@ -138,8 +136,8 @@ defineOptions({
             );
           "
         >
-          Kahve Bankası, şehrin en iyi kahve seçkisini sunarak dünyanın saygın
-          kavurucularının kahvelerini sergilemektedir.
+          Kahve Bankası, şehrimize özel olarak seçtiğimiz kahve çeşitleriyle,
+          her damak zevkine hitap etmeyi amaçlıyor.
         </div>
       </q-img>
     </div>
@@ -152,7 +150,12 @@ defineOptions({
         Fikirleriniz, önerileriniz, siparişleriniz ve daha fazlası için ne zaman
         isterseniz bizimle iletişime geçebilirsiniz.
       </p>
-      <q-btn label="İletişim Bilgilerimiz" outline no-caps></q-btn>
+      <q-btn
+        label="İletişim Bilgilerimiz"
+        outline
+        no-caps
+        to="/contact"
+      ></q-btn>
     </div>
   </q-page>
 </template>

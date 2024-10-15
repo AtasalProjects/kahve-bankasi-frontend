@@ -20,6 +20,9 @@ importers:
       quasar:
         specifier: ^2.16.0
         version: 2.17.0
+      seedrandom:
+        specifier: ^3.0.5
+        version: 3.0.5
       vue:
         specifier: ^3.4.18
         version: 3.5.11(typescript@5.5.4)
@@ -1661,6 +1664,9 @@ packages:
 
   sax@1.1.4:
     resolution: {integrity: sha512-5f3k2PbGGp+YtKJjOItpg3P99IMD84E4HOvcfleTb5joCHNXYLsR9yWFPOYGgaeMPDubQILTCMdsFb2OMeOjtg==}
+
+  seedrandom@3.0.5:
+    resolution: {integrity: sha512-8OwmbklUNzwezjGInmZ+2clQmExQPvomqjL7LFqOYqtmuxRgQYqOD3mHaU+MvZn5FLUeVxVfQjwLZW/n/JFuqg==}
 
   semver@7.6.3:
     resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
@@ -3695,6 +3701,8 @@ snapshots:
       source-map-js: 1.2.1
 
   sax@1.1.4: {}
+
+  seedrandom@3.0.5: {}
 
   semver@7.6.3: {}
 

@@ -11,9 +11,8 @@ import { mdiDirections } from '@quasar/extras/mdi-v6';
           $q.screen.gt.md ? 'text-h4' : 'text-h5'
         } text-apple text-weight-regular text-grey-10`"
       >
-        "Kahve Bankası, dünyanın dört bir yanından seçkin kavurucuların
-        kahvelerini sunarak şehrin en iyi kahve seçeneklerini her gün sizlerle
-        buluşturuyor."
+        "Kahve zamanınızı daha keyifli hale getiren lezzetler sunarak, her
+        yudumda unutulmaz anılar biriktirmenizi sağlıyoruz."
       </p>
     </div>
     <q-img
