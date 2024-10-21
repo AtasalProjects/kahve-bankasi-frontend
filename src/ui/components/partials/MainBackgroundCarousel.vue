@@ -30,6 +30,7 @@ const setBackground = (imgSrc: string) => {
       v-model="slide"
       infinite
       height="800px"
+      :autoplay="true"
     >
       <q-carousel-slide
         :name="1"
@@ -74,6 +75,7 @@ const setBackground = (imgSrc: string) => {
             :size="$q.screen.gt.md ? 'xl' : 'md'"
             outline
             no-caps
+            to="/about"
           />
           <q-btn
             class="q-px-xl q-py-xs"
@@ -82,6 +84,7 @@ const setBackground = (imgSrc: string) => {
             :size="$q.screen.gt.md ? 'xl' : 'md'"
             outline
             no-caps
+            to="/locations"
           />
         </div>
       </q-carousel-slide>
@@ -107,6 +110,7 @@ const setBackground = (imgSrc: string) => {
           size="xl"
           outline
           no-caps
+          to="/locations"
         />
       </q-carousel-slide>
     </q-carousel>

@@ -27,11 +27,7 @@ const routes: RouteRecordRaw[] = [
     path: '/shop',
     component: () => import('layouts/NavbarFooterLayout.vue'),
     children: [
-      { path: 'coffee', component: () => import('pages/shop/CoffeePage.vue') },
-      {
-        path: 'all-products',
-        component: () => import('pages/shop/AllProductsPage.vue'),
-      },
+      { path: ':category', component: () => import('pages/shop/ShopPage.vue') },
     ],
   },
   {

@@ -15,9 +15,13 @@ const social = [
 ];
 
 const contact = [
-  { label: 'Email', value: 'info@company.com' },
-  { label: 'Phone', value: '+1 234 567 890' },
-  { label: 'Address', value: '123 Coffee St, City, Country' },
+  { label: 'Email', value: 'info@kahvebankasi.com', icon: 'mdi-email' },
+  { label: 'Phone', value: '+90 551 144 8492', icon: 'mdi-phone' },
+  {
+    label: 'Address',
+    value: 'Uzak mh. Ücra sk. no: 12, kat: 0. Midyat/Mardin.',
+    icon: 'mdi-map-marker',
+  },
 ];
 </script>
 
@@ -63,17 +67,14 @@ const contact = [
           </div>
         </div>
         <div class="col-6 col-md-3">
-          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls">İletişim</p>
+          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls q-pb-sm">
+            İletişim
+          </p>
           <div v-for="link in contact" :key="link.label">
-            <q-btn
-              class="custom-button"
-              flat
-              color="primary"
-              :label="link.label"
-              :ripple="false"
-              padding="xs xs"
-              no-caps
-            />
+            <h6 class="text-body1 custom-button text-primary q-my-sm">
+              <q-icon :name="link.icon"> </q-icon>
+              {{ link.value }}
+            </h6>
           </div>
         </div>
       </div>

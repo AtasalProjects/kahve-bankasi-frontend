@@ -102,7 +102,7 @@ const menuList = [
             <q-separator :key="'sep' + index" v-if="menuItem.separator" />
           </template>
           <q-expansion-item expand-separator icon="mdi-store" label="Mağazamız">
-            <q-item :inset-level="1" clickable v-ripple to="/shop/all-products">
+            <q-item :inset-level="1" clickable v-ripple to="/shop/all">
               <q-item-section avatar>
                 <q-icon name="mdi-table-of-contents" />
               </q-item-section>
@@ -113,6 +113,12 @@ const menuList = [
                 <q-icon name="mdi-coffee" />
               </q-item-section>
               <q-item-section> Kahveler </q-item-section>
+            </q-item>
+            <q-item :inset-level="1" clickable v-ripple to="/shop/cookie">
+              <q-item-section avatar>
+                <q-icon name="mdi-cookie" />
+              </q-item-section>
+              <q-item-section> Çerezler </q-item-section>
             </q-item>
           </q-expansion-item>
         </q-list>

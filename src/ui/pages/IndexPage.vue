@@ -121,8 +121,8 @@ const img = randomSrc(1)[0];
           Biz müşterilerimize çeşitli kahve seçenekleri sunmaktan ve onlarla bu
           lezzetleri paylaşmaktan büyük keyif alıyoruz. Kendi kahvemizi özenle
           kavurmanın yanı sıra, farklı tatlar deneme fırsatı sunuyoruz. Bu
-          keyifli anları sizinle paylaşmaktan ve kahve deneyimlerinizi
-          zenginleştirmekten mutluluk duyuyoruz.
+          keyifli anları sizinle paylaşmak ve kahve deneyimlerinizi
+          zenginleştirmekten memnun oluruz.
         </p>
       </div>
       <q-img class="q-mt-md" :src="img" height="500px">

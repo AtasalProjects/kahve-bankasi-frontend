@@ -101,7 +101,7 @@ function handleMouseLeaveFromLink() {
             :ripple="false"
             name="shop-all-products"
             label="Mağaza"
-            to="/shop/all-products"
+            to="/shop/all"
             @mouseover="handleMouseOnLink"
             @mouseleave="handleMouseLeaveFromLink"
           />
@@ -155,7 +155,7 @@ function handleMouseLeaveFromLink() {
                   :ripple="false"
                   name="shop-all-p"
                   label="Çerezler"
-                  to="/shop/all-products"
+                  to="/shop/cookie"
                 />
               </q-tabs>
             </q-tab-panel>
