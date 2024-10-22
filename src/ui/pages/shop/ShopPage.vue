@@ -3,6 +3,11 @@ import img1 from 'assets/images/1.png';
 import img2 from 'assets/images/2.png';
 import img3 from 'assets/images/3.png';
 import img4 from 'assets/images/4.png';
+import mix from 'assets/images/cookies/mix.png';
+import nuts from 'assets/images/cookies/nuts.png';
+import sunflowers from 'assets/images/cookies/sunflower_seeds.png';
+import walnuts from 'assets/images/cookies/walnuts.png';
+
 import { computed, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -26,7 +31,9 @@ const category = computed(() => {
   return 'Tüm Ürünler';
 });
 
-const images = [img1, img2, img3, img4];
+const coffees = [img1, img2, img3, img4];
+const cookies = [mix, nuts, sunflowers, walnuts];
+const images = [...coffees, ...cookies];
 
 const current = ref(1);
 
@@ -50,19 +57,66 @@ function getData(page: number, count: number = 20) {
 
       <div class="row justify-center q-col-gutter-x-sm q-gutter-y-xl q-pt-xl">
         <q-intersection
-          v-for="index in getData(current)"
+          v-for="index in getData(
+            current,
+            categoryParam === 'cookie' || categoryParam === 'coffee' ? 10 : 20
+          )"
           :key="index"
           class="col-12 col-md-4 col-lg-4"
           transition="scale"
           style="height: 605px"
         >
           <q-card
+            v-if="categoryParam === 'coffee'"
             flat
             class="all-pointer-events transparent q-pa-sm"
             @click="$router.push('/products/' + (index % 4))"
           >
             <q-img
-              :src="`${images[index % 4]}`"
+              :src="`${coffees[index % 4]}`"
+              class="q-mb-xl"
+              fit="contain"
+              ratio="1"
+              height="427px"
+              max-height="576px"
+            />
+
+            <q-card-section>
+              <div class="text-h5 text-apple-ls">Osmanlı Kahvesi</div>
+              <div class="text-subtitle1">Atasal Kahve</div>
+              <div class="text-subtitle2 text-weight-light">₺456.00</div>
+            </q-card-section>
+          </q-card>
+          <q-card
+            v-else-if="categoryParam === 'cookie'"
+            flat
+            class="all-pointer-events transparent q-pa-sm"
+            @click="$router.push('/products/' + (index % 4))"
+          >
+            <q-img
+              :src="`${cookies[index % 4]}`"
+              class="q-mb-xl"
+              fit="contain"
+              ratio="1"
+              height="427px"
+              max-height="576px"
+            />
+
+            <q-card-section>
+              <div class="text-h5 text-apple-ls">Çerez</div>
+              <div class="text-subtitle1">Kahve Bankası</div>
+              <div class="text-subtitle2 text-weight-light">₺155.00</div>
+            </q-card-section>
+          </q-card>
+
+          <q-card
+            v-else
+            flat
+            class="all-pointer-events transparent q-pa-sm"
+            @click="$router.push('/products/' + (index % 4))"
+          >
+            <q-img
+              :src="`${images[index % 8]}`"
               class="q-mb-xl"
               fit="contain"
               ratio="1"
