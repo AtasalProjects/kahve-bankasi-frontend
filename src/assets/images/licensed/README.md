@@ -8,7 +8,7 @@
 
 [5. Click](https://www.pexels.com/tr-tr/fotograf/peyzaj-manzara-daglar-sis-15699965/)
 
-[6. Click](Pexels'tan İsra Nilgün Özkan fotoğrafı: https://www.pexels.com/tr-tr/fotograf/28935033/)
+[6. Click](https://www.pexels.com/tr-tr/fotograf/28935033/)
 
 [7. Click](https://www.pexels.com/tr-tr/fotograf/gida-yemek-yiyecek-kahve-13802103/)
 
