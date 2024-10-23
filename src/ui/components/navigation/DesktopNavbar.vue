@@ -100,7 +100,7 @@ function handleMouseLeaveFromLink() {
           <q-route-tab
             :ripple="false"
             name="shop-all-products"
-            label="Mağaza"
+            label="Ürünlerimiz"
             to="/shop/all"
             @mouseover="handleMouseOnLink"
             @mouseleave="handleMouseLeaveFromLink"

@@ -2,8 +2,7 @@
 const menu = [
   { label: 'Anasayfa', to: '/' },
   { label: 'Hakkımızda', to: '/about' },
-  { label: 'Mağazamız', to: '/shop/all-products' },
-  { label: 'Kahveler', to: '/shop/coffee' },
+  { label: 'Ürünlerimiz', to: '/shop/all' },
   { label: 'İletişim', to: '/contact' },
 ];
 
@@ -31,10 +30,14 @@ const contact = [
       <div class="row full-width full-height q-py-xs-xl" style="height: 300px">
         <div class="col-12 col-md-4">
           <div
-            class="flex justify-start items-start full-height full-width q-pr-md-lg q-mb-xs-lg"
+            class="flex-row justify-start items-start full-height full-width q-pr-md-lg q-mb-xs-lg"
           >
-            <h5 class="text-h4 font-weight-bold q-my-none">Kahve Bankası</h5>
-            <p>Huzur ve konforunuz bizim için her zaman ilk sırada.</p>
+            <h5 class="col text-h4 font-weight-bold q-mt-none q-mb-lg">
+              Kahve Bankası
+            </h5>
+            <p class="col text-grey-5">
+              Huzur ve konforunuz bizim için her zaman ilk sırada.
+            </p>
           </div>
         </div>
         <div class="col-6 col-md-2">

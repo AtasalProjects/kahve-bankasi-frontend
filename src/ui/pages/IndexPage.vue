@@ -136,8 +136,8 @@ const img = randomSrc(1)[0];
             );
           "
         >
-          Kahve Bankası, şehrimize özel olarak seçtiğimiz kahve çeşitleriyle,
-          her damak zevkine hitap etmeyi amaçlıyor.
+          Kahve Bankası, özenle seçilmiş kahve çeşitleriyle her damak zevkine
+          hitap edebilmeyi amaçlıyor.
         </div>
       </q-img>
     </div>
@@ -147,8 +147,8 @@ const img = randomSrc(1)[0];
         Bizimle iletişime geçin
       </h4>
       <p class="text-body1">
-        Fikirleriniz, önerileriniz, siparişleriniz ve daha fazlası için ne zaman
-        isterseniz bizimle iletişime geçebilirsiniz.
+        Fikirleriniz, önerileriniz, siparişleriniz ve daha fazlası için
+        dilediğiniz zaman bizimle iletişime geçebilirsiniz.
       </p>
       <q-btn
         label="İletişim Bilgilerimiz"

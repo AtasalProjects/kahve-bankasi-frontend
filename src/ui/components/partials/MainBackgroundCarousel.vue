@@ -30,7 +30,7 @@ const setBackground = (imgSrc: string) => {
       v-model="slide"
       infinite
       height="800px"
-      :autoplay="true"
+      :autoplay="12000"
     >
       <q-carousel-slide
         :name="1"
@@ -43,9 +43,9 @@ const setBackground = (imgSrc: string) => {
           <!-- style="padding-bottom: 5.3rem" -->
 
           <h1 class="store-title text-apple-ls">
-            Kahve Bankası:
+            Kahve Bankası
             <br />
-            Midyat'taki Özel Deneyim, Evinizde
+            Midyat’ın Geleneksel Kahve Tadını Keşfedin
           </h1>
           <q-btn
             class="q-px-xl q-py-xs"
@@ -64,19 +64,8 @@ const setBackground = (imgSrc: string) => {
         :style="setBackground(imageSrcs[1])"
         class="column no-wrap flex-center bg-image"
       >
-        <h1 class="store-title text-apple-ls">
-          2016'dan Beri Midyat'a Kahve Sunuyoruz
-        </h1>
+        <h1 class="store-title text-apple-ls">Her Yudumda Farklı Bir Tat</h1>
         <div>
-          <q-btn
-            class="q-px-xl q-py-xs q-mr-md"
-            label="Hikayemiz"
-            color="white"
-            :size="$q.screen.gt.md ? 'xl' : 'md'"
-            outline
-            no-caps
-            to="/about"
-          />
           <q-btn
             class="q-px-xl q-py-xs"
             label="Konumumuz"
@@ -94,7 +83,20 @@ const setBackground = (imgSrc: string) => {
         :style="setBackground(imageSrcs[2])"
         class="column no-wrap flex-center bg-image"
       >
-        <h1 class="store-title text-apple-ls">Her Yudumda Farklı Bir Tat</h1>
+        <h1 class="store-title text-apple-ls">
+          Kahve Sevenlerin Midyat'taki Durağı
+        </h1>
+        <div>
+          <q-btn
+            class="q-px-xl q-py-xs q-mr-md"
+            label="Hikayemiz"
+            color="white"
+            :size="$q.screen.gt.md ? 'xl' : 'md'"
+            outline
+            no-caps
+            to="/about"
+          />
+        </div>
       </q-carousel-slide>
 
       <q-carousel-slide
@@ -105,12 +107,12 @@ const setBackground = (imgSrc: string) => {
         <h1 class="store-title text-apple-ls">Lezzet Dolu Molalar</h1>
         <q-btn
           class="q-px-xl q-py-xs"
-          label="İncele"
+          label="Ürünlerimizi inceleyin"
           color="white"
           size="xl"
           outline
           no-caps
-          to="/locations"
+          to="/shop/all"
         />
       </q-carousel-slide>
     </q-carousel>

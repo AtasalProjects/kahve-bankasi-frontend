@@ -62,7 +62,7 @@ function getData(page: number, count: number = 20) {
             categoryParam === 'cookie' || categoryParam === 'coffee' ? 10 : 20
           )"
           :key="index"
-          class="col-12 col-md-4 col-lg-4"
+          class="col-6 col-md-4 col-lg-4"
           transition="scale"
           style="height: 605px"
         >

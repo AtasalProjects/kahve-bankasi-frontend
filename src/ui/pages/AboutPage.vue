@@ -13,12 +13,10 @@ const images = randomSrc(3);
           $q.screen.gt.md ? 'text-h6' : 'text-body1'
         } text-weight-regular text-grey-10`"
       >
-        Kahve Bankası, Mardin'in tarihi dokusunu modern bir kahve deneyimiyle
-        buluşturan, sıcak ve samimi bir durak. Kahveye olan tutkumuz, lezzet
-        arayışımızla birleşerek her fincanda sizin tercihinize göre en özel
-        karışımları sunmamızı sağlıyor. Espresso, süt oranı, kahvenizin
-        sıcaklığı gibi her detayı tamamen size göre ayarlıyoruz. Böylece her
-        yudum, tamamen size ait.
+        Kahve Bankası, kahvenin eşsiz tadını Mardin'in kadim tarihi dokusuyla
+        buluşturan sıcak ve samimi bir mekan. Kahveye olan tutkumuz, lezzet
+        arayışımızla birleşerek her kahve çeşidinde en özel karışımları elde
+        edebilmemizi sağlıyor.
       </p>
       <p
         :class="`${
@@ -26,21 +24,27 @@ const images = randomSrc(3);
         } text-weight-regular text-grey-10`"
       >
         Kahve Bankası'nda, geleneksel kahve kültürünü, modern bir atmosferde
-        yaşıyoruz. Küçük ama sıcak mekanımızda hem çerezler, baharatlar ve
-        kolonyalar gibi ürünlerimizi satın alabilir, hem de dostlarınızla sohbet
-        edip anın tadını çıkarabilirsiniz. Bizim için önemli olan, kendinizi
-        evinizde gibi hissetmeniz.
+        sizlere sunuyoruz. Küçük ama sıcak mekanımızda hem çerezler, baharatlar
+        ve kolonyalar gibi ürünlerimizden dilediğinizi satın alabilir, hem de
+        sevdiklerinizle sohbet edip anın tadını çıkarabilirsiniz. Bizim için
+        önemli olan, kendinizi evinizde gibi hissetmeniz.
       </p>
       <p
         :class="`${
           $q.screen.gt.md ? 'text-h6' : 'text-body1'
         } text-weight-regular text-grey-10`"
       >
-        Biz sadece bir kahve dükkanı değiliz; her fincanda bir hikaye, her
-        sohbetinize eşlik eden bir deneyim sunuyoruz. Kahve Bankası’nda her
-        damla, özenle seçilmiş ve size özel hazırlanmış bir yolculuğa dönüşüyor.
-        Kapımız her zaman açık, gelin, kahvemiz eşliğinde hoş bir muhabbet
-        edelim.
+        Biz sadece bir kahve dükkanı değiliz. Müşterilerimize sıcak bir
+        atmosferde keyifli anlar sunmayı hedefleyen bir buluşma noktasıyız.
+      </p>
+      <p
+        :class="`${
+          $q.screen.gt.md ? 'text-h6' : 'text-body1'
+        } text-weight-regular text-grey-10`"
+      >
+        Kahve Bankası’nda her fincan, özenle seçilmiş ve size özel hazırlanmış
+        bir yolculuğa dönüşüyor. Kapımız her zaman açık. Gelin, kahvemiz
+        eşliğinde hoş bir muhabbet edelim.
       </p>
     </div>
     <div

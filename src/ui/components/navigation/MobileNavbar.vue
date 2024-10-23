@@ -101,7 +101,11 @@ const menuList = [
             </q-item>
             <q-separator :key="'sep' + index" v-if="menuItem.separator" />
           </template>
-          <q-expansion-item expand-separator icon="mdi-store" label="Mağazamız">
+          <q-expansion-item
+            expand-separator
+            icon="mdi-store"
+            label="Ürünlerimiz"
+          >
             <q-item :inset-level="1" clickable v-ripple to="/shop/all">
               <q-item-section avatar>
                 <q-icon name="mdi-table-of-contents" />
