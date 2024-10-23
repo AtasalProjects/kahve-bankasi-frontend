@@ -62,9 +62,9 @@ function getData(page: number, count: number = 20) {
             categoryParam === 'cookie' || categoryParam === 'coffee' ? 10 : 20
           )"
           :key="index"
-          class="col-6 col-md-4 col-lg-4"
+          class="col-6 col-md-4 col-lg-4 md-margin-bottom"
           transition="scale"
-          style="height: 605px"
+          style="height: 605px; "
         >
           <q-card
             v-if="categoryParam === 'coffee'"
@@ -74,10 +74,10 @@ function getData(page: number, count: number = 20) {
           >
             <q-img
               :src="`${coffees[index % 4]}`"
-              class="q-mb-xl"
+              class="q-mb-xs q-mb-md-xl"
               fit="contain"
               ratio="1"
-              height="427px"
+              :height="$q.screen.gt.md ? '427px' : '264px'"
               max-height="576px"
             />
 
@@ -95,10 +95,10 @@ function getData(page: number, count: number = 20) {
           >
             <q-img
               :src="`${cookies[index % 4]}`"
-              class="q-mb-xl"
+              class="q-mb-xs q-mb-md-xl"
               fit="contain"
               ratio="1"
-              height="427px"
+              :height="$q.screen.gt.md ? '427px' : '264px'"
               max-height="576px"
             />
 
@@ -117,10 +117,10 @@ function getData(page: number, count: number = 20) {
           >
             <q-img
               :src="`${images[index % 8]}`"
-              class="q-mb-xl"
+              class="q-mb-xs q-mb-md-xl"
               fit="contain"
               ratio="1"
-              height="427px"
+              :height="$q.screen.gt.md ? '427px' : '264px'"
               max-height="576px"
             />
 
@@ -161,3 +161,11 @@ function getData(page: number, count: number = 20) {
     </q-page-sticky>
   </q-page>
 </template>
+
+<style scoped>
+@media (min-width: 768px) {
+  .md-margin-bottom {
+    margin-bottom: 9rem;
+  }
+}
+</style>

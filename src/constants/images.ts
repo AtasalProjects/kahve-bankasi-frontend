@@ -1,4 +1,4 @@
-import img1 from 'assets/images/about-1.jpg';
+import img1 from 'assets/images/about1.jpg';
 import img2 from 'assets/images/about-2.jpg';
 import img3 from 'assets/images/about-3.jpg';
 import l1 from 'assets/images/licensed/1.jpg';
@@ -16,6 +16,16 @@ import l12 from 'assets/images/licensed/12.jpg';
 import l13 from 'assets/images/licensed/13.jpg';
 import l14 from 'assets/images/licensed/14.jpg';
 import l15 from 'assets/images/licensed/15.jpg';
+import l16 from 'assets/images/licensed/16.jpg';
+import l17 from 'assets/images/licensed/17.jpg';
+import l18 from 'assets/images/licensed/18.jpg';
+import l19 from 'assets/images/licensed/19.jpg';
+import l20 from 'assets/images/licensed/20.jpg';
+import l21 from 'assets/images/licensed/21.jpg';
+import l22 from 'assets/images/licensed/22.jpg';
+import l23 from 'assets/images/licensed/23.jpg';
+
+
 
 export const images = {
   about1: img1,
@@ -32,20 +42,20 @@ export const images = {
   l7: l7,
   l8: l8,
   l9: l9,
-  l12: l10,
-  l13: l11,
-  l14: l12,
-  l15: l13,
-  l16: l14,
-  l17: l15,
-
-  // $7.50
-  // https://www.istockphoto.com/tr/foto%C4%9Fraf/coffee-plantation-in-costa-rica-at-harvest-time-gm1344801894-423054392
-  l10: 'https://media.istockphoto.com/id/1344801894/tr/foto%C4%9Fraf/coffee-plantation-in-costa-rica-at-harvest-time.webp?s=2048x2048&w=is&k=20&c=6n9tln5zCp4qyvW-8a33r1_DJKO1dgrY7Lj9kWCn5Gw=',
-
-  // $7.50
-  // https://www.istockphoto.com/tr/foto%C4%9Fraf/coffee-combine-harvester-gm1325763978-410683238
-  l11: 'https://media.istockphoto.com/id/1325763978/tr/foto%C4%9Fraf/coffee-combine-harvester.webp?s=2048x2048&w=is&k=20&c=d39-R31uAdJgVSPZbyG6LHYnw5MQcV6Ge96oyrewqLw=',
+  l10:l10,
+  l11:l11,
+  l12: l12,
+  l13: l13,
+  l14: l14,
+  l15: l15,
+  l16: l16,
+  l17: l17,
+  l18: l18,
+  l19: l19,
+  l20: l20,
+  l21: l21,
+  l22: l22,
+  l23: l23,
 };
 
 export function randomSrc(count: number = 1): string[] {
@@ -55,7 +65,7 @@ export function randomSrc(count: number = 1): string[] {
   const result: string[] = [];
   if (count) {
     for (let i = 0; i < count; i++) {
-      let randomNumber = getRandomNumberBetween(3, 19);
+      let randomNumber = getRandomNumberBetween(3, 25);
       while (true) {
         if (!uniqueNumbers.includes(randomNumber)) {
           uniqueNumbers.push(randomNumber);
