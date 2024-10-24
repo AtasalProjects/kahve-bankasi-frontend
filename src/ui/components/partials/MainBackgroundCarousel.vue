@@ -1,16 +1,21 @@
 <script setup lang="ts">
+import { useQuasar } from 'quasar';
 import { randomSrc } from 'src/constants/images';
 import { onMounted, ref } from 'vue';
+
+const $q = useQuasar();
+
 const slide = ref(1);
 const imageSrcs = ref<string[]>([]);
 
 onMounted(() => {
-  imageSrcs.value = randomSrc(4);
+  if ($q.screen.gt.md) imageSrcs.value = randomSrc(4, 'lg');
+  else imageSrcs.value = randomSrc(4, 'sm');
 });
 
 const setBackground = (imgSrc: string) => {
   return {
-    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url(${imgSrc})`,
+    backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)), url(${imgSrc})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
@@ -64,7 +69,10 @@ const setBackground = (imgSrc: string) => {
         :style="setBackground(imageSrcs[1])"
         class="column no-wrap flex-center bg-image"
       >
-        <h1 class="store-title text-apple-ls">Her Yudumda Farklı Bir Tat</h1>
+        <h1 class="store-title text-apple-ls">
+          Her Yudumda <br class="mobile-only" />
+          Farklı Bir Tat
+        </h1>
         <div>
           <q-btn
             class="q-px-xl q-py-xs"

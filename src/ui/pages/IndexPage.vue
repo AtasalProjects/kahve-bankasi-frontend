@@ -131,7 +131,7 @@ const img = randomSrc(1)[0];
           style="
             background: linear-gradient(
               to bottom,
-              rgba(0, 0, 0, 0.4),
+              rgba(0, 0, 0, 0.7),
               rgba(0, 0, 0, 0.3)
             );
           "
