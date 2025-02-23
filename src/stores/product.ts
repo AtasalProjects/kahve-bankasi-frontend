@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { Product } from 'src/models/product';
 import { productService } from 'src/services/product-service';
 import { Paginate } from 'src/models/paginate';
+import { useCategoryStore } from './category';
 
 export const useProductStore = defineStore('product', () => {
   const products = ref<Product[]>([]);
@@ -17,8 +18,8 @@ export const useProductStore = defineStore('product', () => {
     if (typeof categoryId === 'number') {
       return products.value.filter((c) => c.categoryId === categoryId);
     } else {
-      // const category = useCategoryStore().findByName(categoryId)
-      // return contents.value.filter((c) => c.categoryId === category?.id)
+      const category = useCategoryStore().findByName(categoryId);
+      return products.value.filter((c) => c.categoryId === category?.id);
     }
   }
 

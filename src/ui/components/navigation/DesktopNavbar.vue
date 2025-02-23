@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { useCategoryStore } from 'src/stores/category';
+import { computed, onMounted, ref } from 'vue';
 
 const tab = ref('');
 const shopTabPanels = ref('');
@@ -8,6 +9,14 @@ const isTransitioning = ref(false);
 
 const isMouseOverShopLink = ref(false);
 const isMouseOverShopTabs = ref(false);
+
+const categoryStore = useCategoryStore();
+
+const productCategories = computed(() => {
+  return categoryStore.categories.filter(
+    (category) => category.name === 'coffee' || category.name === 'nuts'
+  );
+});
 
 const hidden = ref(false);
 const isScrolled = ref(false);
@@ -146,16 +155,12 @@ function handleMouseLeaveFromLink() {
                 no-caps
               >
                 <q-route-tab
+                  v-for="category in productCategories"
+                  :key="category.id"
                   :ripple="false"
-                  name="shop-coffee"
-                  label="Kahveler"
-                  to="/shop/coffee"
-                />
-                <q-route-tab
-                  :ripple="false"
-                  name="shop-all-p"
-                  label="Çerezler"
-                  to="/shop/cookie"
+                  :name="category.name"
+                  :label="category.description"
+                  :to="`/shop/${category.name}`"
                 />
               </q-tabs>
             </q-tab-panel>

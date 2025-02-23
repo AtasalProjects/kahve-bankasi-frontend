@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { useCategoryStore } from 'src/stores/category';
+import { computed, onMounted, ref } from 'vue';
 
 const drawer = ref(false);
 
 const isScrolled = ref(false);
 const hidden = ref(false);
+
+const categoryStore = useCategoryStore();
+
+const productCategories = computed(() => {
+  return categoryStore.categories.filter(
+    (category) => category.name === 'coffee' || category.name === 'nuts'
+  );
+});
 
 const { transparentEffect } = defineProps({
   transparentEffect: { type: Boolean, default: true, required: false },
@@ -112,17 +121,18 @@ const menuList = [
               </q-item-section>
               <q-item-section> Tüm Ürünler </q-item-section>
             </q-item>
-            <q-item :inset-level="1" clickable v-ripple to="/shop/coffee">
+            <q-item
+              v-for="category in productCategories"
+              :key="category.id"
+              :inset-level="1"
+              clickable
+              v-ripple
+              :to="`/shop/${category.name}`"
+            >
               <q-item-section avatar>
                 <q-icon name="mdi-coffee" />
               </q-item-section>
-              <q-item-section> Kahveler </q-item-section>
-            </q-item>
-            <q-item :inset-level="1" clickable v-ripple to="/shop/cookie">
-              <q-item-section avatar>
-                <q-icon name="mdi-cookie" />
-              </q-item-section>
-              <q-item-section> Çerezler </q-item-section>
+              <q-item-section> {{ category.description }} </q-item-section>
             </q-item>
           </q-expansion-item>
         </q-list>

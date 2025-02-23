@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useContentStore } from 'stores/content';
+
+const contentStore = useContentStore();
+</script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-left">
@@ -20,25 +24,15 @@
         fazlası için ne zaman isterseniz bizimle iletişime geçebilirsiniz.
       </p>
 
-      <div class="text-h6 text-weight-light inline-block full-width">
+      <div
+        v-for="content in contentStore.getByCategory('contact')"
+        :key="content.id"
+        class="text-h6 text-weight-light inline-block full-width"
+      >
         <b class="feature-width text-weight-bold text-grey-10 inline-block">
-          Telefon
+          {{ content.head }}
         </b>
-        <span>+90 551 144 8492</span>
-      </div>
-      <div class="text-h6 text-weight-light inline-block full-width">
-        <b class="feature-width text-weight-bold text-grey-10 inline-block">
-          Email
-        </b>
-        <span class="inline-block">info@kahvebankasi.com</span>
-      </div>
-      <div class="text-h6 text-weight-light full-width" style="display: block">
-        <b class="feature-width text-weight-bold text-grey-10 inline-block">
-          Adres
-        </b>
-        <span class="inline-block value">
-          Uzak mh. Ücra sk. no: 12, kat: 0. Midyat/Mardin.
-        </span>
+        <span>{{ content.body }}</span>
       </div>
     </div>
   </q-page>

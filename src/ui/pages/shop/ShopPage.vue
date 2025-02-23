@@ -1,146 +1,143 @@
 <script setup lang="ts">
-import img1 from 'assets/images/1.png';
-import img2 from 'assets/images/2.png';
-import img3 from 'assets/images/3.png';
-import img4 from 'assets/images/4.png';
-import mix from 'assets/images/cookies/mix.png';
-import nuts from 'assets/images/cookies/nuts.png';
-import sunflowers from 'assets/images/cookies/sunflower_seeds.png';
-import walnuts from 'assets/images/cookies/walnuts.png';
-
-import { computed, ref, watch } from 'vue';
+import { useProductBrowse } from 'src/stores/product-browse';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-
-type Category = 'coffee' | 'cookie' | 'all';
+import { storeToRefs } from 'pinia';
+import { ProductQueryOrderBy } from 'src/composables/use-products';
+import { useCategoryStore } from 'src/stores/category';
 
 const route = useRoute();
 
 const categoryParam = ref<string>(route.params.category as string);
+const page = ref<number>(+route.query.page! || 1);
+
+const categoryStore = useCategoryStore();
+
+const productBrowse = useProductBrowse();
+const { data, loading, meta } = storeToRefs(productBrowse);
 
 watch(
   () => route.params,
-  (n) => {
+  async (n) => {
     categoryParam.value = n.category as string;
+    await updateQuery({ itemsPerPage: 10, page: page.value });
   }
 );
 
-const category = computed(() => {
-  if ((categoryParam.value as Category) === 'coffee') return 'Kahveler';
-  else if ((categoryParam.value as Category) === 'cookie') return 'Çerezler';
+watch(
+  () => route.query,
+  (n) => {
+    if (+n.page! !== page.value) {
+      page.value = n.page as unknown as number;
+      meta.value.currentPage = page.value;
+    }
+  }
+);
+
+const selectedCategory = computed(() => {
+  const category = getCategoryByName(categoryParam.value);
+  if (category) return category.description;
 
   return 'Tüm Ürünler';
 });
 
-const coffees = [img1, img2, img3, img4];
-const cookies = [mix, nuts, sunflowers, walnuts];
-const images = [...coffees, ...cookies];
-
-const current = ref(1);
-
-watch(current, () => {
+watch(page, async (n) => {
+  await updateQuery({ itemsPerPage: 10, page: n });
   scroll(0, 0);
 });
 
-function scroll(x: number, y: number) {
-  window.scrollTo({ top: x, left: y, behavior: 'smooth' });
+onMounted(async () => {
+  await updateQuery({ itemsPerPage: 10, page: page.value });
+});
+
+function getCategoryByName(name: string) {
+  return categoryStore.categories.find((c) => c.name === name);
 }
 
-function getData(page: number, count: number = 20) {
-  return Array.from(Array(count - Math.floor(Math.random() * 5)).keys());
+const updateQuery = async (options: {
+  page?: number;
+  itemsPerPage?: number;
+  sortBy?: { key: string; order: string }[];
+}) => {
+  const orderBy = options.sortBy?.map(
+    (s) => ({ column: s.key, order: s.order } as ProductQueryOrderBy)
+  );
+
+  const category = getCategoryByName(categoryParam.value);
+
+  productBrowse.setQuery({
+    pattern: undefined,
+    page: options.page,
+    perPage: options.itemsPerPage || 10,
+    order_by: orderBy,
+    with_category: category ? true : false,
+    category_id: category ? category?.id : undefined,
+  });
+
+  await productBrowse.fetch();
+};
+
+function scroll(x: number, y: number) {
+  window.scrollTo({ top: x, left: y, behavior: 'smooth' });
 }
 </script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-center">
     <div class="q-px-lg q-mb-xl">
-      <h4 class="text-h4 text-apple-ls q-mb-md q-mb-md-xl">{{ category }}</h4>
+      <h4 class="text-h4 text-apple-ls q-mb-md q-mb-md-xl">
+        {{ selectedCategory }}
+      </h4>
 
-      <div class="row justify-center q-col-gutter-x-sm q-gutter-y-xl q-pt-xl">
+      <div
+        v-if="!loading"
+        class="row justify-center q-col-gutter-x-sm q-gutter-y-xl q-pt-xl"
+      >
         <q-intersection
-          v-for="index in getData(
-            current,
-            categoryParam === 'cookie' || categoryParam === 'coffee' ? 10 : 20
-          )"
-          :key="index"
+          v-for="product in data"
+          :key="product.id"
           class="col-6 col-md-4 col-lg-4 md-margin-bottom"
           transition="scale"
-          style="height: 605px; "
+          style="height: 605px"
         >
           <q-card
-            v-if="categoryParam === 'coffee'"
             flat
             class="all-pointer-events transparent q-pa-sm"
-            @click="$router.push('/products/' + (index % 4))"
+            @click="$router.push('/products/' + product.id)"
           >
             <q-img
-              :src="`${coffees[index % 4]}`"
+              v-if="product.media && product.media.length > 0"
+              :src="product.media[0].url"
               class="q-mb-xs q-mb-md-xl"
               fit="contain"
               ratio="1"
+              loading="lazy"
+              spinner-color="black"
               :height="$q.screen.gt.md ? '427px' : '264px'"
               max-height="576px"
             />
 
             <q-card-section>
-              <div class="text-h5 text-apple-ls">Osmanlı Kahvesi</div>
-              <div class="text-subtitle1">Atasal Kahve</div>
-              <div class="text-subtitle2 text-weight-light">₺456.00</div>
-            </q-card-section>
-          </q-card>
-          <q-card
-            v-else-if="categoryParam === 'cookie'"
-            flat
-            class="all-pointer-events transparent q-pa-sm"
-            @click="$router.push('/products/' + (index % 4))"
-          >
-            <q-img
-              :src="`${cookies[index % 4]}`"
-              class="q-mb-xs q-mb-md-xl"
-              fit="contain"
-              ratio="1"
-              :height="$q.screen.gt.md ? '427px' : '264px'"
-              max-height="576px"
-            />
-
-            <q-card-section>
-              <div class="text-h5 text-apple-ls">Çerez</div>
-              <div class="text-subtitle1">Kahve Bankası</div>
-              <div class="text-subtitle2 text-weight-light">₺155.00</div>
-            </q-card-section>
-          </q-card>
-
-          <q-card
-            v-else
-            flat
-            class="all-pointer-events transparent q-pa-sm"
-            @click="$router.push('/products/' + (index % 4))"
-          >
-            <q-img
-              :src="`${images[index % 8]}`"
-              class="q-mb-xs q-mb-md-xl"
-              fit="contain"
-              ratio="1"
-              :height="$q.screen.gt.md ? '427px' : '264px'"
-              max-height="576px"
-            />
-
-            <q-card-section>
-              <div class="text-h5 text-apple-ls">Osmanlı Kahvesi</div>
-              <div class="text-subtitle1">Atasal Kahve</div>
-              <div class="text-subtitle2 text-weight-light">₺456.00</div>
+              <div class="text-h5 text-apple-ls">{{ product.name }}</div>
+              <div class="text-subtitle1">{{ product.producer }}</div>
+              <div class="text-subtitle2 text-weight-light">
+                ₺{{ product.price }}
+              </div>
             </q-card-section>
           </q-card>
         </q-intersection>
 
         <q-pagination
-          v-model="current"
+          v-if="meta"
+          v-model="page"
           class="col-12 flex-center"
-          :max="5"
+          :max="Math.ceil(meta.total / meta.perPage)"
           direction-links
           unelevated
           color="black"
           active-color="secondary"
           size="lg"
+          @update:model-value="$router.push({ query: { page: page } })"
         />
       </div>
     </div>

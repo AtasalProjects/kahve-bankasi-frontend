@@ -1,6 +1,7 @@
 import { DateTime } from 'luxon';
 import { Brand } from './brand';
 import { Category } from './category';
+import { Media } from './media';
 
 export class Product {
   declare id: number;
@@ -42,4 +43,6 @@ export class Product {
   declare brand: Brand;
 
   declare category: Category;
+
+  declare media: Media[];
 }

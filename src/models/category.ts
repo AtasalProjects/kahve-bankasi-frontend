@@ -24,14 +24,4 @@ export class Category {
   declare contents: Content[];
 }
 
-export type Categories =
-  | 'branch'
-  | 'business-tech'
-  | 'staff'
-  | 'treatment-tech'
-  | 'founders'
-  | 'all-coffees'
-  | 'faq'
-  | 'contact'
-  | 'social'
-  | 'gallery';
+export type Categories = 'coffee' | 'nuts' | 'contact' | 'social' | 'location';

@@ -1,34 +1,52 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { Product } from 'models/product';
+import { productService } from 'src/services/product-service';
+import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
 
-const imgNumber = ref<string>(route.params.slug as string);
+const id = ref<number>(+route.params.slug as number);
+const loading = ref<boolean>(false);
+const product = ref<Product>();
 
-const imgUrl = new URL(
-  `/src/assets/images/${+imgNumber.value + 1}.png`,
-  import.meta.url
-).href;
+onMounted(async () => {
+  await fetchProduct();
+});
+
+async function fetchProduct() {
+  if (id.value && id.value !== 0) {
+    loading.value = true;
+
+    product.value = await productService.show<Product>(id.value);
+    loading.value = false;
+  }
+}
 </script>
 
 <template>
   <q-page class="q-mb-xl full-height bg-primary text-center">
     <div class="q-px-lg q-mb-xl" style="padding-top: 145px">
-      <div class="row">
-        <div class="col-12 col-md-6">
-          <q-img :src="imgUrl" class="q-mb-xl" fit="scale-down" ratio="0.75" />
+      <div v-if="product" class="row">
+        <div
+          v-if="product.media && product.media.length > 0"
+          class="col-12 col-md-6"
+        >
+          <q-img
+            :src="product.media[0].url"
+            class="q-mb-xl"
+            fit="scale-down"
+            ratio="0.75"
+          />
         </div>
         <div class="col-12 col-md-6 text-left q-px-xl">
           <div class="text-subtitle1 text-weight-regular q-mb-md">
-            Atasal Kahve
+            {{ product.producer }}
           </div>
-          <div class="text-h5 text-apple q-mb-sm">Osmanlı Kahvesi</div>
-          <div class="text-subtitle1 q-mb-sm">₺456.00</div>
+          <div class="text-h5 text-apple q-mb-sm">{{ product.name }}</div>
+          <div class="text-subtitle1 q-mb-sm">₺{{ product.price }}</div>
           <p class="text-body2 q-mb-lg">
-            Osmanlı döneminden ilham alınarak üretilen, zengin ve kadifemsi bir
-            kahve deneyimi sunan geleneksel Türk kahvesi. Yoğun kakao ve baharat
-            aromalarıyla damakta kalıcı bir tat bırakır.
+            {{ product.summary }}
           </p>
 
           <q-separator class="q-mb-lg" color="black"></q-separator>
@@ -44,48 +62,24 @@ const imgUrl = new URL(
             to="/contact"
           ></q-btn>
 
-          <p class="text-body1">
-            Atasal Kahve’nin sınırlı üretim Osmanlı Kahvesi, en kaliteli kahve
-            çekirdeklerinden özenle hazırlanmıştır. İstanbul'un kahve kültürüne
-            dayanan bu özel seri, yüzyıllardır süregelen kahve geleneklerine
-            sadık kalarak işlenmiştir.
-          </p>
-          <p class="text-body1">
-            Kahvenin kaynağı, Türkiye'nin doğusundaki bereketli topraklardan
-            toplanan, yüksek kaliteli Arabica çekirdekleridir. Tamamen doğal
-            yöntemlerle, el işçiliğiyle işlenen bu kahve, zengin ve yoğun bir
-            aromaya sahiptir.
-          </p>
           <p class="text-body1 q-mb-lg">
-            Osmanlı Kahvesi, taş değirmenlerde özenle öğütülüp, geleneksel
-            yöntemlerle kavrulmuş, Türk kahvesine özgü eşsiz aromasını
-            kaybetmeden fincanlara ulaşır.
+            {{ product.description }}
           </p>
 
           <q-separator class="q-mb-lg" color="black"></q-separator>
 
-          <div class="text-body2 text-weight-regular inline-block full-width">
-            <b class="feature-width text-weight-bold text-grey-10 inline-block">
-              Üretici →
-            </b>
-            <span>Atasal Kahve</span>
-          </div>
-          <div class="text-body2 text-weight-regular inline-block full-width">
-            <b class="feature-width text-weight-bold text-grey-10 inline-block">
-              Kaynak →
-            </b>
-            <span class="inline-block">Mardin, Türkiye</span>
-          </div>
           <div
-            class="text-body2 text-weight-regular full-width"
-            style="display: block"
+            v-for="([key, value], index) in Object.entries(
+              product.specifications || {}
+            )"
+            :key="index"
+            class="text-body2 text-weight-regular inline-block full-width"
           >
             <b class="feature-width text-weight-bold text-grey-10 inline-block">
-              İşleme Yöntemi →
+              {{ key }}
             </b>
-            <span class="inline-block value">
-              Geleneksel taş değirmen öğütme ve el yapımı kavurma
-            </span>
+            <span class="q-mx-sm">→</span>
+            <span>{{ value }}</span>
           </div>
         </div>
       </div>
