@@ -30,12 +30,13 @@ async function fetchProduct() {
       <div v-if="product" class="row">
         <div
           v-if="product.media && product.media.length > 0"
-          class="col-12 col-md-6"
+          class="col-12 col-md-6 self-start"
         >
           <q-img
             :src="product.media[0].url"
             class="q-mb-xl"
             fit="scale-down"
+            position="top"
             ratio="0.75"
           />
         </div>

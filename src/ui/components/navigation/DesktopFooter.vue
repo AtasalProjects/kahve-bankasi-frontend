@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useContentStore } from 'src/stores/content';
+
 const menu = [
   { label: 'Anasayfa', to: '/' },
   { label: 'Hakkımızda', to: '/about' },
@@ -6,22 +8,7 @@ const menu = [
   { label: 'İletişim', to: '/contact' },
 ];
 
-const social = [
-  { label: 'Facebook', url: 'https://www.facebook.com/companyname' },
-  { label: 'Twitter', url: 'https://www.twitter.com/companyname' },
-  { label: 'Instagram', url: 'https://www.instagram.com/companyname' },
-  { label: 'LinkedIn', url: 'https://www.linkedin.com/company/companyname' },
-];
-
-const contact = [
-  { label: 'Email', value: 'info@kahvebankasi.com', icon: 'mdi-email' },
-  { label: 'Phone', value: '+90 551 144 8492', icon: 'mdi-phone' },
-  {
-    label: 'Address',
-    value: 'Uzak mh. Ücra sk. no: 12, kat: 0. Midyat/Mardin.',
-    icon: 'mdi-map-marker',
-  },
-];
+const contentStore = useContentStore();
 </script>
 
 <template>
@@ -57,27 +44,41 @@ const contact = [
         </div>
         <div class="col-6 col-md-2">
           <p class="text-h4 font-weight-bold q-mb-md text-apple-ls">Sosyal</p>
-          <div v-for="link in social" :key="link.label">
+          <div
+            v-for="content in contentStore.getByCategory('social')"
+            :key="content.id"
+          >
             <q-btn
               class="custom-button"
               flat
               color="primary"
-              :label="link.label"
+              :label="content.head || ''"
               :ripple="false"
               padding="xs xs"
               no-caps
+              target="_blank"
+              :href="content.link || ''"
             />
           </div>
         </div>
         <div class="col-6 col-md-3">
-          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls q-pb-sm">
-            İletişim
-          </p>
-          <div v-for="link in contact" :key="link.label">
-            <h6 class="text-body1 custom-button text-primary q-my-sm">
-              <q-icon :name="link.icon"> </q-icon>
-              {{ link.value }}
-            </h6>
+          <p class="text-h4 font-weight-bold q-mb-md text-apple-ls">İletişim</p>
+          <div
+            v-for="content in contentStore.getByCategory('contact')"
+            :key="content.id"
+          >
+            <q-btn
+              class="custom-button"
+              flat
+              color="primary"
+              :label="content.head || ''"
+              :icon="content.icon || ''"
+              :ripple="false"
+              padding="xs xs"
+              no-caps
+              target="_blank"
+              :href="content.link || ''"
+            />
           </div>
         </div>
       </div>

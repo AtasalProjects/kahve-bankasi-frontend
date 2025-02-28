@@ -112,9 +112,10 @@ function scroll(x: number, y: number) {
               fit="contain"
               ratio="1"
               loading="lazy"
-              spinner-color="black"
               :height="$q.screen.gt.md ? '427px' : '264px'"
               max-height="576px"
+              placeholder-src="~assets/coffee-placeholder-1.png"
+              :loading-show-delay="3000"
             />
 
             <q-card-section>
